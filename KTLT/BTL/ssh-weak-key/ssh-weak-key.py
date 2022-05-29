@@ -41,7 +41,7 @@ def connect(host, user, keyfile, release):
 
 
 def main():
-    parser = optparse.OptionParser('Missing flag: ' + '-H <target host> -u <user> -F <password list>')
+    parser = optparse.OptionParser('Missing flag: ' + '-H <target host> -u <user> -d <directory>')
     parser.add_option('-H', dest='tgtHost', type='string', help='specify target host')
     parser.add_option('-d', dest='passDir', type='string', help='specify directory with keys')
     parser.add_option('-u', dest='user', type='string', help='specify the user')
